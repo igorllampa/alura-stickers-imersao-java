@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+D:\Desenvolvimento\Curso-Spring\Alura\projeto\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+3958452002.index
+1941383128.index

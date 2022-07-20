@@ -1,5 +1,7 @@
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -9,7 +11,7 @@ import java.util.Map;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		System.out.println("Hello World!");
 		
 		//Fazer uma conexao HTTP e buscar os top 250 filmes
@@ -36,15 +38,23 @@ public class Main {
 		//Exibir os dados
 		for (Map<String, String> filme : listaDeFilmes) {
 			
+			String urlImagem = filme.get("image");
+			String titulo = filme.get("title");
+			String nomeArquivo = "saida/" + StringUtils.limpaString(titulo) + ".png";									
+						
 			System.out.println(filme.get("title"));
 			System.out.println(filme.get("image"));
 			System.out.println(filme.get("imDbRating"));
+			System.out.println("Arquivo Gerado:" + nomeArquivo);
 			System.out.println("");
-		}
+			
+			InputStream inputStream = new URL(urlImagem).openStream(); //Com input stream direto de uma URL			
+			var geradoraDeFigurinhas = new GeradoraDeFigurinhas();
+			geradoraDeFigurinhas.cria(inputStream, nomeArquivo);
+			
+		}		
 		
-		
-		
-		
+		System.out.println("Processo concluído!");
 		
 	}
 

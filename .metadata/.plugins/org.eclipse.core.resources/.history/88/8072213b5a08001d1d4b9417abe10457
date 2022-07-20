@@ -1,0 +1,7 @@
+
+public class StringUtils {
+
+	public String limpaString(String str) {					
+		return str.replaceAll("[^a-zA-Z0-9]", "");
+	}
+}

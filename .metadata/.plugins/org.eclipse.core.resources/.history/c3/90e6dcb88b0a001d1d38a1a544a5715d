@@ -1,0 +1,47 @@
+import java.io.InputStream;
+import java.net.URL;
+import java.util.List;
+import java.util.Map;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+		System.out.println("Hello World!");
+		
+		//Fazer uma conexao HTTP e buscar os top 250 filmes
+		String url = "https://api.mocki.io/v2/549a5d8b";
+		
+		var http = new ClienteHttp();
+		String json = http.buscaDados(url);
+		
+		
+//		//Extrair apenas os dados que interessam (titulo, poster, classificacao)
+//		var parser = new JsonParser();
+//		List<Map<String, String>> listaDeConteudos = parser.parse(json);
+		
+		ExtratorDeConteudoDoIMDB extratorDeConteudoDoIMDB = new ExtratorDeConteudoDoIMDB();
+		List<Conteudo> listaDeConteudos = extratorDeConteudoDoIMDB.extraiConteudos(json);
+		
+		//Exibir os dados
+		for (Conteudo conteudo : listaDeConteudos) {
+			
+			String urlImagem = conteudo.getUrlImagem();
+			String titulo = conteudo.getTitulo();
+			String nomeArquivo = "saida/" + StringUtils.limpaString(titulo) + ".png";									
+						
+			System.out.println(conteudo.getTitulo());
+			System.out.println(conteudo.getUrlImagem());			
+			System.out.println("Arquivo Gerado:" + nomeArquivo);
+			System.out.println("");
+			
+			InputStream inputStream = new URL(urlImagem).openStream(); //Com input stream direto de uma URL			
+			var geradoraDeFigurinhas = new GeradoraDeFigurinhas();
+			geradoraDeFigurinhas.cria(inputStream, nomeArquivo);
+			
+		}		
+		
+		System.out.println("Processo concluído!");
+		
+	}
+
+}

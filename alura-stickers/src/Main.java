@@ -8,24 +8,24 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 					
 		//IMDB
-		String url = "https://api.mocki.io/v2/549a5d8b";
-		ExtratorDeConteudo extratorDeConteudo = new ExtratorDeConteudoDoIMDB();							
+//		String url = "https://api.mocki.io/v2/549a5d8b";
+//		ExtratorDeConteudo extratorDeConteudo = new ExtratorDeConteudoDoIMDB();							
 		
 				
 		//NASA
 //		String url = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&count=10";
 //		ExtratorDeConteudo extratorDeConteudo = new ExtratorDeConteudoDaNasa();
 		
+		//WebService local - lingugens-api		
+		String url = "http://localhost:8080/linguagens";
+		ExtratorDeConteudo extratorDeConteudo = new ExtratorDeConteudoDoIMDB();
+			
 		
 		var http = new ClienteHttp();
 		String json = http.buscaDados(url);
 		
-		
-
 		List<Conteudo> listaDeConteudos = extratorDeConteudo.extraiConteudos(json);
-		
-		System.out.println(listaDeConteudos);
-		
+			
 		//Exibir os dados
 		for (Conteudo conteudo : listaDeConteudos) {
 			

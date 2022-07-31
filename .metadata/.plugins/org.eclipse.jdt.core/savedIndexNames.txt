@@ -3,8 +3,8 @@ INDEX VERSION 1.131+D:\Desenvolvimento\Curso-Spring\Alura\projeto\.metadata\.plu
 4206044455.index
 3459366180.index
 1989118038.index
-1300640350.index
 1941383128.index
+1300640350.index
 3958452002.index
 3012100127.index
 376512352.index
@@ -12,8 +12,8 @@ INDEX VERSION 1.131+D:\Desenvolvimento\Curso-Spring\Alura\projeto\.metadata\.plu
 3945878833.index
 1597321022.index
 975041253.index
-1865797976.index
 3079088871.index
+1865797976.index
 1598727390.index
 1625728029.index
 156494863.index
